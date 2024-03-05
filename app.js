@@ -3,12 +3,14 @@ const cors = require("cors");
 require("dotenv").config();
 
 const medicinesRouter = require("./routes/api/medicines");
+const orderRouter = require("./routes/api/orders");
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-app.use("/api", medicinesRouter);
+app.use("/api/medicines", medicinesRouter);
+app.use("/api/orders", orderRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });

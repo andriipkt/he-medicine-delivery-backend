@@ -1,7 +1,12 @@
 const express = require("express");
-const controller = require("../../controllers/medicines/getAll");
+const { getAll, addMedicine } = require("../../controllers");
+const { validateBody } = require("../../middlewares");
+const { medicineSchema } = require("../../schemas");
+
 const router = express.Router();
 
-router.get("/", controller.getAll);
+router.get("/", getAll);
+
+router.post("/", validateBody(medicineSchema), addMedicine);
 
 module.exports = router;
