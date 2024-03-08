@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const { handleMongooseError } = require("../helpers");
+const { medicineSchema } = require("./medicine");
 
 const orderSchema = new Schema(
   {
@@ -17,6 +18,14 @@ const orderSchema = new Schema(
     },
     name: {
       type: String,
+      required: true,
+    },
+    medicines: {
+      type: [medicineSchema],
+      required: true,
+    },
+    totalPrice: {
+      type: Number,
       required: true,
     },
   },

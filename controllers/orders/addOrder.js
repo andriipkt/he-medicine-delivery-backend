@@ -1,4 +1,4 @@
-const { HttpError, ctrlWrapper } = require("../../helpers");
+const { ctrlWrapper } = require("../../helpers");
 const { Order } = require("../../models");
 
 const addOrder = async (req, res) => {

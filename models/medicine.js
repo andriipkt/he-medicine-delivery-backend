@@ -11,9 +11,18 @@ const medicineSchema = new Schema(
       type: Number,
       required: true,
     },
+    type: {
+      type: String,
+      enum: ["drugs", "pharmacy"],
+      required: true,
+    },
     favorite: {
       type: Boolean,
       default: false,
+    },
+    quantity: {
+      type: Number,
+      default: 1,
     },
   },
   { versionKey: false, timestamps: true }
@@ -23,4 +32,4 @@ medicineSchema.post("save", handleMongooseError);
 
 const Medicine = model("medicine", medicineSchema);
 
-module.exports = Medicine;
+module.exports = { Medicine, medicineSchema };
